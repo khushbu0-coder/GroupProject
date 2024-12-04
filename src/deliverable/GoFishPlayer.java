@@ -18,12 +18,6 @@ import java.util.Random;
  * Class representing a player in the Go Fish game.  
  * This class adheres to the **Single Responsibility Principle** by focusing on player-related logic.  
  */  
-/**  
- * Class representing a player in the Go Fish game.  
- */  
-/**  
- * Class representing a player in the Go Fish game.  
- */  
 public class GoFishPlayer extends Player {  
     private ArrayList<GoFishCard> hand;  
     private int score;  
@@ -69,34 +63,30 @@ public class GoFishPlayer extends Player {
         }  
     }  
 
-      
-public void play(ArrayList<Player> players) {  
-    System.out.println(getName() + " is playing their turn.");  
-    // Randomly ask for a card from another player  
-    Random random = new Random();  
-    GoFishPlayer targetPlayer = (GoFishPlayer) players.get(random.nextInt(players.size()));  
-    String requestedRank = hand.isEmpty() ? "2" : hand.get(0).getRank(); // Ask for the rank of the first card in hand or default to "2"  
-    
-    System.out.println(getName() + " asks " + targetPlayer.getName() + " for " + requestedRank + ".");  
-    
-    // Check if the target player has the requested rank  
-    boolean hasCard = false;  
-    for (GoFishCard card : targetPlayer.getHand()) {  
-        if (card.getRank().equals(requestedRank)) {  
-            hasCard = true;  
-            targetPlayer.removeCardFromHand(card); // Remove the card from the target player's hand  
-            this.addCardToHand(card); // Add the card to the current player's hand  
-            System.out.println(targetPlayer.getName() + " gives " + requestedRank + " to " + getName() + ".");  
-            break;  
+    // Player's turn to ask for cards  
+    public void play(ArrayList<Player> players) {  
+        System.out.println(getName() + " is playing their turn.");  
+        // Randomly ask for a card from another player  
+        Random random = new Random();  
+        GoFishPlayer targetPlayer = (GoFishPlayer) players.get(random.nextInt(players.size()));  
+        String requestedRank = hand.isEmpty() ? "2" : hand.get(0).getRank(); // Ask for the rank of the first card in hand or default to "2"  
+        
+        System.out.println(getName() + " asks " + targetPlayer.getName() + " for " + requestedRank + ".");  
+        
+        // Check if the target player has the requested rank  
+        boolean hasCard = false;  
+        for (GoFishCard card : targetPlayer.getHand()) {  
+            if (card.getRank().equals(requestedRank)) {  
+                hasCard = true;  
+                targetPlayer.removeCardFromHand(card); // Remove the card from the target player's hand  
+                this.addCardToHand(card); // Add the card to the current player's hand  
+                System.out.println(targetPlayer.getName() + " gives " + requestedRank + " to " + getName() + ".");  
+                break;  
+            }  
+        }  
+        
+        if (!hasCard) {  
+            System.out.println(targetPlayer.getName() + " does not have " + requestedRank + ". Go Fish!");  
         }  
     }  
-    
-    if (!hasCard) {  
-        System.out.println(targetPlayer.getName() + " does not have " + requestedRank + ". Go Fish!");  
-    }  
 }  
-    @Override
-    public void play() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-} 
