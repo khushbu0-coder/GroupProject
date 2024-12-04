@@ -4,6 +4,8 @@
  */
 package deliverable;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author khush
@@ -27,5 +29,5 @@ public abstract class Player {
         this.name = name;  
     }  
 
-    public abstract void play();  
+    public abstract void play(ArrayList<Player> players);  
 }  
