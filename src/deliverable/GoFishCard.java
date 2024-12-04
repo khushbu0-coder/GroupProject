@@ -8,27 +8,29 @@ package deliverable;
  *
  * @author khush
  */
-public class GoFishCard extends Card{
+/**  
+ * Class representing a Go Fish card.  
+ * This class follows the **Liskov Substitution Principle** as it can be used wherever a Card is expected.  
+ */  
+public class GoFishCard extends Card {  
+    private String rank;      
+    private String suit;      
 
-private String rank;      //  2-10 , Jack , Queen , King , Ace 
-private String suit;      //hearts , dimaonds , clubs , spades
+    public GoFishCard(String rank, String suit) {  
+        this.rank = rank;  
+        this.suit = suit;  
+    }  
 
-public GoFishCard(String rank,String suit){
-  this.rank = rank;
-  this.suit = suit;
-}
+    public String getRank() {  
+        return rank;  
+    }  
 
-public String getrank(){
-  return rank;
-}
+    public String getSuit() {  
+        return suit;  
+    }  
 
-public String getsuit(){
-  return suit;
-}
-
-  @Override
-  public String toString(){
-    return rank + "of" + suit;
-  }
-
-}
+    @Override  
+    public String toString() {  
+        return rank + " of " + suit;  
+    }  
+}  
