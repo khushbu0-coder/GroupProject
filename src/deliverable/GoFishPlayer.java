@@ -11,19 +11,20 @@ package deliverable;
  */
 import java.util.ArrayList;  
 
+/**  
+ * Class representing a player in the Go Fish game.  
+ * This class adheres to the **Single Responsibility Principle** by focusing on player-related logic.  
+ */  
 public class GoFishPlayer extends Player {  
-
     private ArrayList<GoFishCard> hand;  
-    private int score;  // number of books (collection of 4 cards of the same rank)  
+    private int score;  
 
-    // Constructor  
     public GoFishPlayer(String name) {  
         super(name);  
         this.hand = new ArrayList<>();  
         this.score = 0;  
     }  
 
-    // Getters  
     public ArrayList<GoFishCard> getHand() {  
         return hand;  
     }  
@@ -40,7 +41,7 @@ public class GoFishPlayer extends Player {
         hand.remove(card);  
     }  
   
-    public void incrementScore() { // Added void return type  
+    public void incrementScore() {  
         score++;  
     }  
 
@@ -48,4 +49,4 @@ public class GoFishPlayer extends Player {
     public void play() {  
         System.out.println(getName() + " is playing their turn.");  
     }  
-}  
+}   
