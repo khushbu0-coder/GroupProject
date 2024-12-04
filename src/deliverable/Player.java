@@ -8,39 +8,24 @@ package deliverable;
  *
  * @author khush
  */
-public abstract class Player {
+/**  
+ * Abstract class representing a generic Player.  
+ * This class follows the **Open/Closed Principle** as it can be extended to create different types of players.  
+ */  
+public abstract class Player {  
+    private String name;   
 
-    private String name; //the unique name for this player
+    public Player(String name) {  
+        this.name = name;  
+    }  
 
-    /**
-     * A constructor that allows you to set the player's unique ID
-     *
-     * @param name the unique ID to assign to this player.
-     */
-    public Player(String name) {
-        this.name = name;
-    }
+    public String getName() {  
+        return name;  
+    }  
 
-    /**
-     * @return the player name
-     */
-    public String getName() {
-        return name;
-    }
+    public void setName(String name) {  
+        this.name = name;  
+    }  
 
-    /**
-     * Ensure that the playerID is unique
-     *
-     * @param name the player name to set
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * The method to be overridden when you subclass the Player class with your specific type of Player and filled in
-     * with logic to play your game.
-     */
-    public abstract void play();
-
-}
+    public abstract void play();  
+}  
