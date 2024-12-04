@@ -37,7 +37,7 @@ public class GoFishGame extends Game {
             System.out.println("Round " + (rounds + 1) + ":");  
             dealCards(7); // Deal cards at the start of each round  
             for (Player player : getPlayers()) {  
-                ((GoFishPlayer) player).play(); // Call play method for each player  
+                ((GoFishPlayer) player).play(getPlayers()); // Pass the list of players to each player's turn  
             }  
             rounds++;  
         }  
