@@ -12,8 +12,12 @@ package deliverable;
  */
 import java.util.ArrayList;  
 
+/**  
+ * Class representing the Go Fish game.  
+ * This class uses the **Singleton Pattern** for the CardDeck.  
+ */  
 public class GoFishGame extends Game {  
-    private CardDeck deck; // Composition  
+    private CardDeck deck; // Reference to the singleton CardDeck  
     private int rounds; // Number of rounds to play  
     private static final int MAX_ROUNDS = 4; // Total rounds to play  
 
@@ -21,7 +25,7 @@ public class GoFishGame extends Game {
         super(name);  
         setPlayers(new ArrayList<>(players)); // Use the setPlayers method from the parent class  
         this.rounds = 0; // Initialize rounds  
-        this.deck = new CardDeck(); // Initialize the deck  
+        this.deck = CardDeck.getInstance(); // Get the singleton instance of CardDeck  
     }  
 
     @Override  
@@ -29,7 +33,7 @@ public class GoFishGame extends Game {
         while (rounds < MAX_ROUNDS) {  
             System.out.println("Round " + (rounds + 1) + ":");  
             dealCards(7); // Deal cards at the start of each round  
-            for (Player player : getPlayers()) { // Use getPlayers() to access the players  
+            for (Player player : getPlayers()) {  
                 ((GoFishPlayer) player).play(); // Call play method for each player  
             }  
             rounds++;  
@@ -39,10 +43,10 @@ public class GoFishGame extends Game {
 
     public void dealCards(int numberOfCards) {  
         for (int i = 0; i < numberOfCards; i++) {  
-            for (Player player : getPlayers()) { // Use getPlayers() to access the players  
+            for (Player player : getPlayers()) {  
                 GoFishCard card = (GoFishCard) deck.drawCard();  
                 if (card != null) {  
-                    ((GoFishPlayer) player).addCardToHand(card); // Cast to GoFishPlayer  
+                    ((GoFishPlayer) player).addCardToHand(card);  
                 } else {  
                     System.out.println("No more cards left in the deck.");  
                     return; // Exit if no cards are left  
@@ -53,7 +57,6 @@ public class GoFishGame extends Game {
 
     @Override  
     public void declareWinner() {  
-        // Implement the logic to declare the winner  
         GoFishPlayer winner = null;  
         int maxScore = -1;  
 
