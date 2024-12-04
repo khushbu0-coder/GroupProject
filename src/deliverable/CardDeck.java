@@ -12,13 +12,27 @@ import java.util.ArrayList;
 import java.util.Collections;  
  
 
+/**  
+ * Class representing a deck of cards.  
+ * This class uses the **Singleton Pattern** to ensure only one instance of CardDeck exists.  
+ */  
 public class CardDeck {  
+    private static CardDeck instance; // Singleton instance  
     private ArrayList<Card> cards;  
 
-    public CardDeck() {  
+    // Private constructor to prevent instantiation  
+    private CardDeck() {  
         cards = new ArrayList<>();  
         initializeDeck();  
         shuffle();  
+    }  
+
+    // Public method to provide access to the singleton instance  
+    public static CardDeck getInstance() {  
+        if (instance == null) {  
+            instance = new CardDeck();  
+        }  
+        return instance;  
     }  
 
     private void initializeDeck() {  
