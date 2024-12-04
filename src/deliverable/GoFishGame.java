@@ -16,6 +16,9 @@ import java.util.ArrayList;
  * Class representing the Go Fish game.  
  * This class uses the **Singleton Pattern** for the CardDeck.  
  */  
+/**  
+ * Class representing the Go Fish game.  
+ */  
 public class GoFishGame extends Game {  
     private CardDeck deck; // Reference to the singleton CardDeck  
     private int rounds; // Number of rounds to play  
@@ -30,7 +33,7 @@ public class GoFishGame extends Game {
 
     @Override  
     public void play() {  
-        while (rounds < MAX_ROUNDS) {  
+        while (rounds < MAX_ROUNDS && deck.getRemainingCards() > 0) {  
             System.out.println("Round " + (rounds + 1) + ":");  
             dealCards(7); // Deal cards at the start of each round  
             for (Player player : getPlayers()) {  
