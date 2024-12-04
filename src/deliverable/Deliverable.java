@@ -4,17 +4,30 @@
  */
 package deliverable;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author khush
  */
 public class Deliverable {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
+     /**  
+     * @param args the command line arguments  
+     */  
+    public static void main(String[] args) {  
+        // Create players for the Go Fish game  
+        ArrayList<GoFishPlayer> players = new ArrayList<>();  
+        players.add(new GoFishPlayer("Alice"));  
+        players.add(new GoFishPlayer("Bob"));  
+        players.add(new GoFishPlayer("Charlie"));  
+        players.add(new GoFishPlayer("Diana"));  
+
+        // Create a Go Fish game instance  
+        GoFishGame game = new GoFishGame("Go Fish", players);  
+
+        // Start the game  
+        game.play();  
+    }  
     
 }
